@@ -1,11 +1,13 @@
 // Product data
 const products = [
+    // Men's Products
     {
         id: 0,
         name: "Classic White Shirt",
         description: "Premium cotton blend, perfect for formal occasions and everyday wear",
         price: "PKR 2,500",
         priceNumber: 2500,
+        category: "men",
         image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=600&fit=crop"
     },
     {
@@ -14,6 +16,7 @@ const products = [
         description: "Classic fit denim jacket with vintage wash finish",
         price: "PKR 4,200",
         priceNumber: 4200,
+        category: "men",
         image: "https://images.unsplash.com/photo-1544966503-7cc5ac882d5a?w=400&h=600&fit=crop"
     },
     {
@@ -22,6 +25,7 @@ const products = [
         description: "Slim fit formal trousers in premium polyester blend",
         price: "PKR 3,800",
         priceNumber: 3800,
+        category: "men",
         image: "https://images.unsplash.com/photo-1578587018452-8927c328b87d?w=400&h=600&fit=crop"
     },
     {
@@ -30,39 +34,82 @@ const products = [
         description: "Soft cotton t-shirt with modern fit design",
         price: "PKR 1,800",
         priceNumber: 1800,
+        category: "men",
         image: "https://images.unsplash.com/photo-1592878967665-1f8f32b1c4c8?w=400&h=600&fit=crop"
     },
+    // Women's Products
     {
         id: 4,
-        name: "Blue Blazer",
-        description: "Professional blazer in navy blue with modern cut",
-        price: "PKR 7,500",
-        priceNumber: 7500,
-        image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&h=600&fit=crop"
-    },
-    {
-        id: 5,
-        name: "Wool Sweater",
-        description: "Warm wool sweater for winter comfort and style",
-        price: "PKR 4,800",
-        priceNumber: 4800,
-        image: "https://images.unsplash.com/photo-1543076447-215ad9ba6923?w=400&h=600&fit=crop"
-    },
-    {
-        id: 6,
-        name: "Checkered Shirt",
-        description: "Classic checkered pattern shirt in soft cotton",
-        price: "PKR 3,200",
-        priceNumber: 3200,
+        name: "Summer Dress",
+        description: "Elegant floral dress perfect for summer occasions",
+        price: "PKR 5,200",
+        priceNumber: 5200,
+        category: "women",
         image: "https://images.unsplash.com/photo-1566479179817-c62c24b9c2a1?w=400&h=600&fit=crop"
     },
     {
+        id: 5,
+        name: "Silk Blouse",
+        description: "Luxurious silk blouse with elegant design",
+        price: "PKR 6,800",
+        priceNumber: 6800,
+        category: "women",
+        image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&h=600&fit=crop"
+    },
+    {
+        id: 6,
+        name: "Designer Jeans",
+        description: "Premium fit jeans with stretch comfort",
+        price: "PKR 4,500",
+        priceNumber: 4500,
+        category: "women",
+        image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=600&fit=crop"
+    },
+    {
         id: 7,
-        name: "Khaki Chinos",
-        description: "Comfortable cotton chinos with slim fit design",
-        price: "PKR 3,500",
-        priceNumber: 3500,
+        name: "Knit Cardigan",
+        description: "Cozy knit cardigan for layered styling",
+        price: "PKR 5,500",
+        priceNumber: 5500,
+        category: "women",
+        image: "https://images.unsplash.com/photo-1543076447-215ad9ba6923?w=400&h=600&fit=crop"
+    },
+    // Kids' Products
+    {
+        id: 8,
+        name: "Kids Hoodie",
+        description: "Comfortable cotton hoodie for active kids",
+        price: "PKR 2,800",
+        priceNumber: 2800,
+        category: "kids",
+        image: "https://images.unsplash.com/photo-1503342217505-b0a15cf70489?w=400&h=600&fit=crop"
+    },
+    {
+        id: 9,
+        name: "Kids Pants",
+        description: "Durable and comfortable everyday pants",
+        price: "PKR 2,200",
+        priceNumber: 2200,
+        category: "kids",
         image: "https://images.unsplash.com/photo-1583743814966-8936f37f31c9?w=400&h=600&fit=crop"
+    },
+    {
+        id: 10,
+        name: "Kids T-Shirt",
+        description: "Fun and colorful t-shirt for playtime",
+        price: "PKR 1,500",
+        priceNumber: 1500,
+        category: "kids",
+        image: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=400&h=600&fit=crop"
+    },
+    {
+        id: 11,
+        name: "Kids Jacket",
+        description: "Warm and protective jacket for all seasons",
+        price: "PKR 3,800",
+        priceNumber: 3800,
+        category: "kids",
+        image: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&h=600&fit=crop"
     }
 ];
 
@@ -70,6 +117,7 @@ const products = [
 let selectedCity = localStorage.getItem('selectedCity') || '';
 let selectedSize = null;
 let currentProduct = null;
+let currentCategory = 'all';
 
 // DOM elements
 const citySelector = document.getElementById('citySelector');
@@ -92,6 +140,15 @@ function initializeApp() {
     
     // Initialize city selection
     initializeCitySelection();
+    
+    // Initialize navigation menu
+    initializeNavigationMenu();
+    
+    // Initialize mobile menu
+    initializeMobileMenu();
+    
+    // Initialize category filters
+    initializeCategoryFilters();
     
     // Initialize product cards
     initializeProductCards();
@@ -129,6 +186,128 @@ function showMainStore() {
         mainStore.style.pointerEvents = 'auto';
         mainStore.classList.add('fade-in');
     }, 400);
+}
+
+function initializeNavigationMenu() {
+    const navItems = document.querySelectorAll('.nav-item');
+    
+    navItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const category = this.dataset.category;
+            
+            // Update active nav item
+            navItems.forEach(nav => nav.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filter products
+            filterProducts(category);
+        });
+    });
+}
+
+function initializeCategoryFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const category = this.dataset.category;
+            
+            // Update active filter button
+            filterBtns.forEach(filter => filter.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Update navigation menu if it exists
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(nav => nav.classList.remove('active'));
+            const correspondingNav = document.querySelector(`[data-category="${category}"]`);
+            if (correspondingNav) {
+                correspondingNav.classList.add('active');
+            }
+            
+            // Filter products
+            filterProducts(category);
+        });
+    });
+}
+
+function initializeMobileMenu() {
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (mobileMenuToggle && navMenu) {
+        mobileMenuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            
+            // Animate hamburger menu
+            const spans = mobileMenuToggle.querySelectorAll('span');
+            spans.forEach((span, index) => {
+                if (navMenu.classList.contains('active')) {
+                    if (index === 0) span.style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    if (index === 1) span.style.opacity = '0';
+                    if (index === 2) span.style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                } else {
+                    span.style.transform = 'none';
+                    span.style.opacity = '1';
+                }
+            });
+        });
+        
+        // Close mobile menu when clicking on nav items
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                
+                // Reset hamburger menu
+                const spans = mobileMenuToggle.querySelectorAll('span');
+                spans.forEach(span => {
+                    span.style.transform = 'none';
+                    span.style.opacity = '1';
+                });
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mobileMenuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                navMenu.classList.remove('active');
+                
+                // Reset hamburger menu
+                const spans = mobileMenuToggle.querySelectorAll('span');
+                spans.forEach(span => {
+                    span.style.transform = 'none';
+                    span.style.opacity = '1';
+                });
+            }
+        });
+    }
+}
+
+function filterProducts(category) {
+    currentCategory = category;
+    const productCards = document.querySelectorAll('.product-card');
+    
+    productCards.forEach(card => {
+        const cardCategory = card.dataset.category;
+        
+        if (category === 'all' || cardCategory === category) {
+            card.style.display = 'block';
+            card.style.animation = 'fadeIn 0.5s ease-in-out';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+    
+    // Update products count
+    updateProductsCount();
+}
+
+function updateProductsCount() {
+    const visibleProducts = document.querySelectorAll('.product-card[style*="block"], .product-card:not([style*="none"])');
+    const count = visibleProducts.length;
+    
+    // You can add a products count display here if needed
+    console.log(`Showing ${count} products`);
 }
 
 function initializeProductCards() {

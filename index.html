@@ -11,36 +11,112 @@
 </head>
 <body>
     <!-- City Selection Overlay -->
-    <div id="citySelector" class="city-overlay">
+    <div id="citySelector" class="city-overlay" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1920&h=1080&fit=crop'); background-size: cover; background-position: center;">
         <div class="city-container">
-            <h1 class="city-title">Select Your City</h1>
-            <div class="city-list">
-                <button class="city-option" data-city="Karachi">Karachi</button>
-                <button class="city-option" data-city="Lahore">Lahore</button>
-                <button class="city-option" data-city="Islamabad">Islamabad</button>
-                <button class="city-option" data-city="Rawalpindi">Rawalpindi</button>
+            <div class="city-overlay-content">
+                <h1 class="city-title">Select Your City</h1>
+                <p class="city-subtitle">Choose your location to start shopping</p>
+                <div class="city-list">
+                    <button class="city-option" data-city="Karachi">Karachi</button>
+                    <button class="city-option" data-city="Lahore">Lahore</button>
+                    <button class="city-option" data-city="Islamabad">Islamabad</button>
+                    <button class="city-option" data-city="Rawalpindi">Rawalpindi</button>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Main Store -->
     <div id="mainStore" class="main-content" style="opacity: 0; pointer-events: none;">
+        <!-- Navigation Header -->
+        <nav class="main-nav">
+            <div class="container">
+                <div class="nav-content">
+                    <!-- Logo -->
+                    <div class="nav-logo">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="20" cy="20" r="20" fill="#087F8C"/>
+                            <path d="M12 15L20 12L28 15V25C28 26.1046 27.1046 27 26 27H14C12.8954 27 12 26.1046 12 25V15Z" stroke="white" stroke-width="2" fill="none"/>
+                            <path d="M16 20L19 23L24 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="logo-text">Modern Clothing</span>
+                    </div>
+
+                    <!-- Navigation Menu -->
+                    <div class="nav-menu">
+                        <button class="nav-item active" data-category="all">All Products</button>
+                        <button class="nav-item" data-category="men">Men</button>
+                        <button class="nav-item" data-category="women">Women</button>
+                        <button class="nav-item" data-category="kids">Kids</button>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="nav-social">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
+                                <path d="M16 11.37C16.24 10.56 16.09 9.61 15.55 8.85C15.01 8.09 14.18 7.64 13.25 7.56C12.32 7.48 11.41 7.69 10.66 8.15C9.91 8.61 9.39 9.28 9.19 10.04C8.99 10.8 9.05 11.61 9.36 12.33C9.67 13.05 10.21 13.64 10.91 14.01C11.61 14.38 12.42 14.49 13.19 14.31C13.96 14.13 14.64 13.68 15.1 13.05C15.56 12.42 15.76 11.66 15.68 10.91" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23 3C22.0424 3.67548 20.9821 4.19211 19.86 4.53C19.2577 3.83751 18.4573 3.34669 17.567 3.12393C16.6767 2.90116 15.7395 2.95718 14.8821 3.28445C14.0247 3.61171 13.2884 4.19439 12.773 4.95372C12.2575 5.71305 11.9877 6.61553 12 7.53V8.53C10.2426 8.57557 8.50127 8.18581 6.93101 7.39624C5.36074 6.60667 4.01032 5.43666 3 4C3 4 -1 13 8 17C5.94053 18.398 3.48716 19.099 1 19C10 24 21 19 21 7.5C20.9991 7.22145 20.9723 6.94359 20.92 6.67C21.9406 5.66349 22.6608 4.39271 23 3V3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Store Header -->
         <header class="store-header">
             <div class="container">
-                <h1 class="store-title">Modern Clothing</h1>
-                <div class="city-badge">
-                    <span id="selectedCityDisplay">Select City</span>
+                <div class="store-header-content">
+                    <div class="store-info">
+                        <h1 class="store-title">Modern Clothing</h1>
+                        <p class="store-subtitle">Quality fashion for every occasion</p>
+                    </div>
+                    <div class="city-badge">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 10C21 17 12 23 12 23S3 17 3 10C3 5.02944 7.02944 1 12 1C16.9706 1 21 5.02944 21 10Z" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <span id="selectedCityDisplay">Select City</span>
+                    </div>
                 </div>
             </div>
         </header>
 
         <main class="store-main">
             <div class="container">
+                <!-- Category Filter -->
+                <div class="category-filters">
+                    <button class="filter-btn active" data-category="all">All Products</button>
+                    <button class="filter-btn" data-category="men">Men</button>
+                    <button class="filter-btn" data-category="women">Women</button>
+                    <button class="filter-btn" data-category="kids">Kids</button>
+                </div>
+
                 <div class="products-grid">
-                    <!-- Product 1 -->
-                    <div class="product-card" data-product="0">
+                    <!-- Men's Products -->
+                    <!-- Product 1 - Men's White Shirt -->
+                    <div class="product-card" data-product="0" data-category="men">
                         <div class="product-image">
                             <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=600&fit=crop" alt="Classic White Shirt">
+                            <div class="category-badge">Men</div>
                         </div>
                         <div class="product-info">
                             <h3 class="product-title">Classic White Shirt</h3>
@@ -49,10 +125,11 @@
                         </div>
                     </div>
 
-                    <!-- Product 2 -->
-                    <div class="product-card" data-product="1">
+                    <!-- Product 2 - Men's Denim Jacket -->
+                    <div class="product-card" data-product="1" data-category="men">
                         <div class="product-image">
                             <img src="https://images.unsplash.com/photo-1544966503-7cc5ac882d5a?w=400&h=600&fit=crop" alt="Denim Jacket">
+                            <div class="category-badge">Men</div>
                         </div>
                         <div class="product-info">
                             <h3 class="product-title">Denim Jacket</h3>
@@ -61,10 +138,11 @@
                         </div>
                     </div>
 
-                    <!-- Product 3 -->
-                    <div class="product-card" data-product="2">
+                    <!-- Product 3 - Men's Black Trousers -->
+                    <div class="product-card" data-product="2" data-category="men">
                         <div class="product-image">
                             <img src="https://images.unsplash.com/photo-1578587018452-8927c328b87d?w=400&h=600&fit=crop" alt="Black Trousers">
+                            <div class="category-badge">Men</div>
                         </div>
                         <div class="product-info">
                             <h3 class="product-title">Black Trousers</h3>
@@ -73,10 +151,11 @@
                         </div>
                     </div>
 
-                    <!-- Product 4 -->
-                    <div class="product-card" data-product="3">
+                    <!-- Product 4 - Men's Casual T-Shirt -->
+                    <div class="product-card" data-product="3" data-category="men">
                         <div class="product-image">
                             <img src="https://images.unsplash.com/photo-1592878967665-1f8f32b1c4c8?w=400&h=600&fit=crop" alt="Casual T-Shirt">
+                            <div class="category-badge">Men</div>
                         </div>
                         <div class="product-info">
                             <h3 class="product-title">Casual T-Shirt</h3>
@@ -85,51 +164,109 @@
                         </div>
                     </div>
 
-                    <!-- Product 5 -->
-                    <div class="product-card" data-product="4">
+                    <!-- Women's Products -->
+                    <!-- Product 5 - Women's Summer Dress -->
+                    <div class="product-card" data-product="4" data-category="women">
                         <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&h=600&fit=crop" alt="Blue Blazer">
+                            <img src="https://images.unsplash.com/photo-1566479179817-c62c24b9c2a1?w=400&h=600&fit=crop" alt="Summer Dress">
+                            <div class="category-badge women">Women</div>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title">Blue Blazer</h3>
-                            <p class="product-description">Professional blazer in navy blue with modern cut</p>
-                            <p class="product-price">PKR 7,500</p>
+                            <h3 class="product-title">Summer Dress</h3>
+                            <p class="product-description">Elegant floral dress perfect for summer occasions</p>
+                            <p class="product-price">PKR 5,200</p>
                         </div>
                     </div>
 
-                    <!-- Product 6 -->
-                    <div class="product-card" data-product="5">
+                    <!-- Product 6 - Women's Blouse -->
+                    <div class="product-card" data-product="5" data-category="women">
                         <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1543076447-215ad9ba6923?w=400&h=600&fit=crop" alt="Sweater">
+                            <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&h=600&fit=crop" alt="Silk Blouse">
+                            <div class="category-badge women">Women</div>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title">Wool Sweater</h3>
-                            <p class="product-description">Warm wool sweater for winter comfort and style</p>
-                            <p class="product-price">PKR 4,800</p>
+                            <h3 class="product-title">Silk Blouse</h3>
+                            <p class="product-description">Luxurious silk blouse with elegant design</p>
+                            <p class="product-price">PKR 6,800</p>
                         </div>
                     </div>
 
-                    <!-- Product 7 -->
-                    <div class="product-card" data-product="6">
+                    <!-- Product 7 - Women's Jeans -->
+                    <div class="product-card" data-product="6" data-category="women">
                         <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1566479179817-c62c24b9c2a1?w=400&h=600&fit=crop" alt="Checkered Shirt">
+                            <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=600&fit=crop" alt="Women's Jeans">
+                            <div class="category-badge women">Women</div>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title">Checkered Shirt</h3>
-                            <p class="product-description">Classic checkered pattern shirt in soft cotton</p>
-                            <p class="product-price">PKR 3,200</p>
+                            <h3 class="product-title">Designer Jeans</h3>
+                            <p class="product-description">Premium fit jeans with stretch comfort</p>
+                            <p class="product-price">PKR 4,500</p>
                         </div>
                     </div>
 
-                    <!-- Product 8 -->
-                    <div class="product-card" data-product="7">
+                    <!-- Product 8 - Women's Cardigan -->
+                    <div class="product-card" data-product="7" data-category="women">
                         <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1583743814966-8936f37f31c9?w=400&h=600&fit=crop" alt="Chinos">
+                            <img src="https://images.unsplash.com/photo-1543076447-215ad9ba6923?w=400&h=600&fit=crop" alt="Cardigan">
+                            <div class="category-badge women">Women</div>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title">Khaki Chinos</h3>
-                            <p class="product-description">Comfortable cotton chinos with slim fit design</p>
-                            <p class="product-price">PKR 3,500</p>
+                            <h3 class="product-title">Knit Cardigan</h3>
+                            <p class="product-description">Cozy knit cardigan for layered styling</p>
+                            <p class="product-price">PKR 5,500</p>
+                        </div>
+                    </div>
+
+                    <!-- Kids' Products -->
+                    <!-- Product 9 - Kids' Hoodie -->
+                    <div class="product-card" data-product="8" data-category="kids">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1503342217505-b0a15cf70489?w=400&h=600&fit=crop" alt="Kids Hoodie">
+                            <div class="category-badge kids">Kids</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Kids Hoodie</h3>
+                            <p class="product-description">Comfortable cotton hoodie for active kids</p>
+                            <p class="product-price">PKR 2,800</p>
+                        </div>
+                    </div>
+
+                    <!-- Product 10 - Kids' Pants -->
+                    <div class="product-card" data-product="9" data-category="kids">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1583743814966-8936f37f31c9?w=400&h=600&fit=crop" alt="Kids Pants">
+                            <div class="category-badge kids">Kids</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Kids Pants</h3>
+                            <p class="product-description">Durable and comfortable everyday pants</p>
+                            <p class="product-price">PKR 2,200</p>
+                        </div>
+                    </div>
+
+                    <!-- Product 11 - Kids' T-Shirt -->
+                    <div class="product-card" data-product="10" data-category="kids">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=400&h=600&fit=crop" alt="Kids T-Shirt">
+                            <div class="category-badge kids">Kids</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Kids T-Shirt</h3>
+                            <p class="product-description">Fun and colorful t-shirt for playtime</p>
+                            <p class="product-price">PKR 1,500</p>
+                        </div>
+                    </div>
+
+                    <!-- Product 12 - Kids' Jacket -->
+                    <div class="product-card" data-product="11" data-category="kids">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&h=600&fit=crop" alt="Kids Jacket">
+                            <div class="category-badge kids">Kids</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Kids Jacket</h3>
+                            <p class="product-description">Warm and protective jacket for all seasons</p>
+                            <p class="product-price">PKR 3,800</p>
                         </div>
                     </div>
                 </div>
@@ -198,7 +335,7 @@
                             <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2"/>
                             <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2"/>
                         </svg>
-                        <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6b02050d042b06040f0e19050807041f0302050c451b00">[email&#160;protected]</a></span>
+                        <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dcb5b2bab39cb1b3b8b9aeb2bfb0b3a8b4b5b2bbf2acb7">[email&#160;protected]</a></span>
                     </div>
                     <div class="contact-item">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
