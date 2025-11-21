@@ -1,18 +1,12 @@
-// Zarva E-commerce Website with Shopping Cart - Complete Working Version
 
-// Configuration
-const WHATSAPP_NUMBER = '923001234567'; // Replace with actual WhatsApp number
+const WHATSAPP_NUMBER = '923452595926'; 
 const BUSINESS_NAME = 'Zarva';
 
-// Cart data storage
+
 let cart = JSON.parse(localStorage.getItem('zarva_cart')) || [];
 let cartItemCounter = 0;
 
 console.log('🛒 Zarva Cart JavaScript loaded successfully!');
-
-// =======================
-// CATEGORY FILTERING - FIXED
-// =======================
 
 function filterProducts(category) {
     console.log('🔄 Filtering products by category:', category);
@@ -21,7 +15,7 @@ function filterProducts(category) {
     const filterButtons = document.querySelectorAll('.filter-section .btn');
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
     
-    // Remove active class from all buttons and links
+   
     filterButtons.forEach(btn => {
         btn.classList.remove('active');
         btn.setAttribute('aria-pressed', 'false');
@@ -32,7 +26,7 @@ function filterProducts(category) {
         link.setAttribute('aria-current', '');
     });
     
-    // Add active class to the clicked button and corresponding nav link
+    
     if (category === 'all') {
         if (filterButtons[0]) {
             filterButtons[0].classList.add('active');
@@ -54,7 +48,7 @@ function filterProducts(category) {
         }
     }
     
-    // Show/hide products with smooth animation
+    
     let visibleCount = 0;
     productCards.forEach(card => {
         const cardCategory = card.getAttribute('data-category');
@@ -81,14 +75,12 @@ function filterProducts(category) {
     showNotification(`Showing ${visibleCount} products in ${category} category`, 'info');
 }
 
-// =======================
-// WHATSAPP ORDERING FUNCTIONS
-// =======================
+
 
 function orderSingleOnWhatsApp(productName, price, productId) {
     console.log('📱 WhatsApp order initiated for:', productName);
     
-    // Get selected size and quantity
+    
     const sizeSelect = document.getElementById(`size-${productId}`);
     const qtySelect = document.getElementById(`qty-${productId}`);
     const citySelector = document.getElementById('citySelector');
@@ -102,10 +94,8 @@ function orderSingleOnWhatsApp(productName, price, productId) {
     const selectedQuantity = parseInt(qtySelect.value);
     const selectedCity = citySelector.value || 'Not specified';
     
-    // Calculate total price
     const totalPrice = price * selectedQuantity;
     
-    // Create WhatsApp message for single product
     const message = `Hello ${BUSINESS_NAME}, I want to order:
 
 📦 *Product:* ${productName}
@@ -116,7 +106,7 @@ function orderSingleOnWhatsApp(productName, price, productId) {
 
 Please confirm availability and delivery details. Thank you!`;
 
-    // Open WhatsApp
+    
     const encodedMessage = encodeURIComponent(message);
     const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
     
@@ -143,7 +133,7 @@ function orderAllOnWhatsApp() {
     
     message += `\n*Shipping (City: ${selectedCity})*\n\n`;
     
-    // Calculate total
+   
     const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
     message += `*Total Amount: PKR ${total.toLocaleString()}*\n\n`;
     message += `Please confirm availability and delivery details. Thank you!`;
@@ -157,14 +147,10 @@ function orderAllOnWhatsApp() {
     showNotification(`Opening WhatsApp with ${cart.length} items for order...`, 'success');
 }
 
-// =======================
-// SHOPPING CART FUNCTIONALITY
-// =======================
 
 function addToCart(productId, productName, price) {
     console.log(`➕ Adding to cart: ${productName} (ID: ${productId}, Price: ${price})`);
     
-    // Get selected size and quantity
     const sizeSelect = document.getElementById(`size-${productId}`);
     const qtySelect = document.getElementById(`qty-${productId}`);
     
@@ -175,8 +161,7 @@ function addToCart(productId, productName, price) {
     
     const selectedSize = sizeSelect.value;
     const selectedQuantity = parseInt(qtySelect.value);
-    
-    // Create cart item
+
     const cartItem = {
         id: `cart_${Date.now()}_${cartItemCounter++}`,
         productId: productId,
@@ -187,17 +172,13 @@ function addToCart(productId, productName, price) {
         totalPrice: price * selectedQuantity,
         timestamp: new Date().toISOString()
     };
-    
-    // Add to cart array
+
     cart.push(cartItem);
-    
-    // Save to localStorage
+ 
     localStorage.setItem('zarva_cart', JSON.stringify(cart));
     
-    // Update cart display
     updateCartDisplay();
-    
-    // Show success notification
+  
     showNotification(`Added ${productName} (${selectedSize}, Qty: ${selectedQuantity}) to cart!`, 'success');
     
     console.log('✅ Product added to cart:', cartItem);
